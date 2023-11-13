@@ -129,11 +129,13 @@ def main():
 
 
     if st.button('Dự đoán kết quả HSA'):
-        with st.spinner('Wait for it...'):
-            time.sleep(2)
+
         if len(results) == 0:
             st.success('Kết quả dự đoán điểm thi HSA của bạn là: ' + str(int(res)))
+            with st.spinner('Wait for it...'):
+                time.sleep(2)
         if len(results) > 1:
+            st.spinner('Wait for it...')
             df_res = pd.DataFrame(results)
             df_res.columns = ['Điểm HSA dự đoán']
             df_res = pd.concat([data, df_res], axis = 1)
