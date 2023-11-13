@@ -131,7 +131,7 @@ def main():
     if st.button('Dự đoán kết quả HSA'):
         with st.spinner('Wait for it...'):
             time.sleep(2)
-        if len(results) == 1:
+        if len(results) == 0:
             st.success('Kết quả dự đoán điểm thi HSA của bạn là: ' + str(int(res)))
         if len(results) > 1:
             df_res = pd.DataFrame(results)
