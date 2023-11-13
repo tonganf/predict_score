@@ -13,8 +13,23 @@ from sklearn.compose import ColumnTransformer
 model = pickle.load(open('hsa_predict_model.sav', 'rb'))
 
 
+# form nhap diem
+st.title('Định dạng mẫu file dữ liệu')
+st.markdown('Tải và mở file excel mẫu, nhập thông tin vào các ô có sẵn theo định dạng đã được thiết kế sẵn trong file.')
+
+with open('file_nhap.xlsx', 'rb') as f:
+    bytes_data = f.read()
+    st.download_button(
+    label='Tải xuống định dạng điểm',
+    data=bytes_data,
+    file_name='file_nhap.xlsx',
+    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+
 # Tạo một widget để tải file
-file_upload = st.file_uploader("Tải file Excel lên") #, accept=[".xlsx", ".xls"]
+file_upload = st.file_uploader("Tải file mẫu vừa sửa lên", ) #, accept=[".xlsx", ".xls"]
+
+
 
 if file_upload is not None:
     data = pd.read_excel(file_upload)       # Đọc dữ liệu từ file
