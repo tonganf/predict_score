@@ -20,15 +20,15 @@ st.markdown('Tải và mở file excel mẫu, nhập thông tin vào các ô có
 with open('file_nhap.xlsx', 'rb') as f:
     bytes_data = f.read()
     st.download_button(
-    label='Tải xuống định dạng điểm',
-    data=bytes_data,
-    file_name='file_nhap.xlsx',
-    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        label='Tải xuống định dạng điểm',
+        data=bytes_data,
+        file_name='file_nhap.xlsx',
+        mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
 
 # Tạo một widget để tải file
-file_upload = st.file_uploader("Tải file mẫu vừa sửa lên", ) #, accept=[".xlsx", ".xls"]
-
+# , accept=[".xlsx", ".xls"]
+file_upload = st.file_uploader("Tải file mẫu vừa sửa lên", )
 
 
 if file_upload is not None:
@@ -62,7 +62,7 @@ def predict_hsa_grade(input_data):
 
 def main():
     # app title
-    st.title("Hệ thống dự đoán điểm thi HSA")
+    st.title("Hệ thống dự đoán điểm đầu ra sinh viên trường Đại học Điện lực")
 
     gioitinh = st.selectbox(
         'Giới tính',
@@ -70,53 +70,79 @@ def main():
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        tongket10 = st.number_input('Điểm tổng kết lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        toan10 = st.number_input('Điểm tổng kết môn Toán lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        van10 = st.number_input('Điểm tổng kết môn Văn lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        ly10 = st.number_input('Điểm tổng kết môn Vật Lý lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        hoa10 = st.number_input('Điểm tổng kết môn Hóa lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        sinh10 = st.number_input('Điểm tổng kết môn Sinh lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        su10 = st.number_input('Điểm tổng kết môn Sử lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        dia10 = st.number_input('Điểm tổng kết môn Địa lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        gdcd10 = st.number_input('Điểm tổng kết môn Công Dân lớp 10', min_value=0.0, max_value=10.0, step=0.1)
-        ngoaingu10 = st.number_input('Điểm tổng kết môn Ngoại Ngữ lớp 10', min_value=0.0, max_value=10.0, step=0.1)
+        tongket10 = st.number_input(
+            'Điểm nhập môn tin học', min_value=0.0, max_value=10.0, step=0.1)
+        toan10 = st.number_input(
+            'Điểm pháp luật đại cương', min_value=0.0, max_value=10.0, step=0.1)
+        van10 = st.number_input('Điểm toán cao cấp 1',
+                                min_value=0.0, max_value=10.0, step=0.1)
+        ly10 = st.number_input('Điểm toán cao cấp 2',
+                               min_value=0.0, max_value=10.0, step=0.1)
+        hoa10 = st.number_input('Điểm toán rời rạc',
+                                min_value=0.0, max_value=10.0, step=0.1)
+        sinh10 = st.number_input(
+            'Điểm triết học Mác-Lênin', min_value=0.0, max_value=10.0, step=0.1)
+        su10 = st.number_input(
+            'Điểm tiếng anh 1', min_value=0.0, max_value=10.0, step=0.1)
+        # dia10 = st.number_input('Điểm tổng kết môn Địa lớp 10', min_value=0.0, max_value=10.0, step=0.1)
+        # gdcd10 = st.number_input('Điểm tổng kết môn Công Dân lớp 10', min_value=0.0, max_value=10.0, step=0.1)
+        # ngoaingu10 = st.number_input('Điểm tổng kết môn Ngoại Ngữ lớp 10', min_value=0.0, max_value=10.0, step=0.1)
         hocluc10 = st.selectbox(
-            'Học lực lớp 10',
+            'Học lực kì I năm 1',
             ('Giỏi', 'Khá', 'Trung bình'))
     with col2:
-        tongket11 = st.number_input('Điểm tổng kết lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        toan11 = st.number_input('Điểm tổng kết môn Toán lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        van11 = st.number_input('Điểm tổng kết môn Văn lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        ly11 = st.number_input('Điểm tổng kết môn Vật Lý lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        hoa11 = st.number_input('Điểm tổng kết môn Hóa lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        sinh11 = st.number_input('Điểm tổng kết môn Sinh lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        su11 = st.number_input('Điểm tổng kết môn Sử lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        dia11 = st.number_input('Điểm tổng kết môn Địa lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        gdcd11 = st.number_input('Điểm tổng kết môn Công Dân lớp 11', min_value=0.0, max_value=10.0, step=0.1)
-        ngoaingu11 = st.number_input('Điểm tổng kết môn Ngoại Ngữ lớp 11', min_value=0.0, max_value=10.0, step=0.1)
+        tongket11 = st.number_input(
+            'Điểm cơ sở dữ liệu', min_value=0.0, max_value=10.0, step=0.1)
+        toan11 = st.number_input(
+            'Điểm kiến trúc máy tính', min_value=0.0, max_value=10.0, step=0.1)
+        van11 = st.number_input(
+            'Điểm kinh tế  chính trị Mác-Lênin', min_value=0.0, max_value=10.0, step=0.1)
+        ly11 = st.number_input('Điểm lập trình C nâng cao',
+                               min_value=0.0, max_value=10.0, step=0.1)
+        hoa11 = st.number_input(
+            'Điểm chủ nghĩa xa hội khoa học', min_value=0.0, max_value=10.0, step=0.1)
+        sinh11 = st.number_input(
+            'Điểm hệ quản trị cơ sở dữ liệu', min_value=0.0, max_value=10.0, step=0.1)
+        su11 = st.number_input('Điểm nguyên lý hệ điều hành',
+                               min_value=0.0, max_value=10.0, step=0.1)
+        dia11 = st.number_input(
+            'Điểm nguyên lý lập trình hướng đối tượng', min_value=0.0, max_value=10.0, step=0.1)
+        gdcd11 = st.number_input(
+            'Điểm nhập môn cấu trúc dữ liệu và giải thuật', min_value=0.0, max_value=10.0, step=0.1)
+        ngoaingu11 = st.number_input(
+            'Điểm phân tích thiết kế hệ thống thông tin', min_value=0.0, max_value=10.0, step=0.1)
         hocluc11 = st.selectbox(
-            'Học lực lớp 11',
+            'Học lực kì II năm 1',
             ('Giỏi', 'Khá', 'Trung bình'))
     with col3:
-        tongket12 = st.number_input('Điểm tổng kết lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        toan12 = st.number_input('Điểm tổng kết môn Toán lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        van12 = st.number_input('Điểm tổng kết môn Văn lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        ly12 = st.number_input('Điểm tổng kết môn Vật Lý lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        hoa12 = st.number_input('Điểm tổng kết môn Hóa lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        sinh12 = st.number_input('Điểm tổng kết môn Sinh lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        su12 = st.number_input('Điểm tổng kết môn Sử lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        dia12 = st.number_input('Điểm tổng kết môn Địa lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        gdcd12 = st.number_input('Điểm tổng kết môn Công Dân lớp 12', min_value=0.0, max_value=10.0, step=0.1)
-        ngoaingu12 = st.number_input('Điểm tổng kết môn Ngoại Ngữ lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        tongket12 = st.number_input(
+            'Điểm tổng kết lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        toan12 = st.number_input(
+            'Điểm tổng kết môn Toán lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        van12 = st.number_input(
+            'Điểm tổng kết môn Văn lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        ly12 = st.number_input(
+            'Điểm tổng kết môn Vật Lý lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        hoa12 = st.number_input(
+            'Điểm tổng kết môn Hóa lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        sinh12 = st.number_input(
+            'Điểm tổng kết môn Sinh lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        su12 = st.number_input('Điểm tổng kết môn Sử lớp 12',
+                               min_value=0.0, max_value=10.0, step=0.1)
+        dia12 = st.number_input(
+            'Điểm tổng kết môn Địa lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        gdcd12 = st.number_input(
+            'Điểm tổng kết môn Công Dân lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+        ngoaingu12 = st.number_input(
+            'Điểm tổng kết môn Ngoại Ngữ lớp 12', min_value=0.0, max_value=10.0, step=0.1)
         hocluc12 = st.selectbox(
             'Học lực lớp 12',
             ('Giỏi', 'Khá', 'Trung bình'))
 
     arr = [gioitinh,
-           tongket10, toan10, van10, ly10, hoa10, sinh10, su10, dia10, gdcd10, ngoaingu10, hocluc10,
+           tongket10, toan10, van10, ly10, hoa10, sinh10, su10, hocluc10,
            tongket11, toan11, van11, ly11, hoa11, sinh11, su11, dia11, gdcd11, ngoaingu11, hocluc11,
            tongket12, toan12, van12, ly12, hoa12, sinh12, su12, dia12, gdcd12, ngoaingu12, hocluc12]
-
 
     results = []    # Khai báo biến chứa kết quả dự đoán (nếu lớn hơn 2 record)
 
@@ -127,16 +153,16 @@ def main():
     else:
         res = predict_hsa_grade(arr)[0]
 
-
     if st.button('Dự đoán kết quả HSA'):
         with st.spinner('Wait for it...'):
             time.sleep(2)
         if len(results) == 1:
-            st.success('Kết quả dự đoán điểm thi HSA của bạn là: ' + str(int(res)))
+            st.success(
+                'Kết quả dự đoán điểm thi HSA của bạn là: ' + str(int(res)))
         if len(results) > 1:
             df_res = pd.DataFrame(results)
             df_res.columns = ['Điểm HSA dự đoán']
-            df_res = pd.concat([data, df_res], axis = 1)
+            df_res = pd.concat([data, df_res], axis=1)
 
             df_res.to_excel('predict_score.xlsx', index=False)
             with open('predict_score.xlsx', 'rb') as f:
