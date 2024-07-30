@@ -116,13 +116,13 @@ def main():
             ('Giỏi', 'Khá', 'Trung bình'))
     with col3:
         tongket12 = st.number_input(
-            'Điểm tổng kết lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+            'Điểm nguyên lý lập trình hướng đối tượng', min_value=0.0, max_value=10.0, step=0.1)
         toan12 = st.number_input(
-            'Điểm tổng kết môn Toán lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+            'Điểm nhập môn cấu trúc dữ liệu và giải thuật', min_value=0.0, max_value=10.0, step=0.1)
         van12 = st.number_input(
-            'Điểm tổng kết môn Văn lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+            'Điểm phân tích thiết kế hệ thống thông tin', min_value=0.0, max_value=10.0, step=0.1)
         ly12 = st.number_input(
-            'Điểm tổng kết môn Vật Lý lớp 12', min_value=0.0, max_value=10.0, step=0.1)
+            'Điểm xác xuất thống kê', min_value=0.0, max_value=10.0, step=0.1)
         hoa12 = st.number_input(
             'Điểm tổng kết môn Hóa lớp 12', min_value=0.0, max_value=10.0, step=0.1)
         sinh12 = st.number_input(
